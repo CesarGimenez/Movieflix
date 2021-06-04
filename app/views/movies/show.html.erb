@@ -1,0 +1,59 @@
+
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-4">
+      <img src=<%= @movie.img %> alt="" class="w-100">
+    </div>
+    <div class="col-8">
+        <h1><%= @movie.title %></h1>
+        <h5> Valoracion: <%= @movie.rate %> <i class="fas fa-star"></i></h5>
+        <p><%= @movie.description %></p>
+      <div class="d-flex">
+        <% if user_signed_in? %>
+          <%= link_to "Editar pelicula", edit_movie_path, class:"link_edit" %>
+          <%= link_to "Eliminar pelicula", @movie, method: :delete, class:"link_delete" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-4">
+      <h2>Agregar comentario</h2>
+      <%= form_with model: [ @movie, @movie.comments.build ] do |form| %>
+      <p>
+        <% if user_signed_in? %>
+          <%= form.label :commenter %><br>
+          <%= form.text_field :commenter, class:"form-control", value: current_user.email, disabled:true %>
+        <% else %>
+          <%= form.label :commenter %><br>
+          <%= form.text_field :commenter, class:"form-control" %>
+        <% end %>
+      </p>
+      <p>
+        <%= form.label :body %><br>
+        <%= form.text_area :body , class:"form-control" %>
+      </p>
+      <p>
+        <%= form.submit %>
+      </p>
+      <% end %>
+    </div>
+    <div class="col-8">
+      <h2>Comments</h2>
+      <% @movie.comments.each do |comment| %>
+        <% if comment %>
+        <div class="comments">
+          <strong>
+          <%= comment.commenter %> </strong> <cite> - <%= time_ago_in_words(comment.created_at || Time.now) %> </cite>
+          <p>
+          <%= comment.body %>
+         </p>
+        </div>
+        <% else %>
+        <p> Aun no hay comentarios </p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+

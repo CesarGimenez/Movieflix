@@ -1,0 +1,52 @@
+// Place all the styles related to the Home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+body {
+  background-color: black;
+  color: white;
+}
+.banner img {
+  filter: brightness(50%);
+}
+.banner .description {
+  position: absolute;
+  transform: translateY(-550px);
+  width: 500px;
+  margin-left: 50px;
+  background-color: black;
+  box-shadow: black 4px 4px 3px, black -4px -4px 3px;
+  padding: 30px;
+  h2 {
+    font-family: "Bebas Neue", cursive;
+    i {
+      color: yellow;
+    }
+  }
+  .link {
+    font-family: "Bebas Neue", cursive;
+    padding: 5px;
+    color: white;
+    font-size: 1.5em;
+    border: white 1px solid;
+  }
+}
+.container {
+  h1 {
+    font-family: "Bebas Neue", cursive;
+    margin: 10px;
+  }
+  ul {
+    font-family: "Bebas Neue", cursive;
+    margin: 10px;
+    li {
+      font-size: 1.5em;
+    }
+  }
+}
+.card {
+  background-color: black;
+  font-family: "Bebas Neue", cursive;
+  .card-footer .link {
+    color: red;
+  }
+}
